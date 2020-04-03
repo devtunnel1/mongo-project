@@ -7,7 +7,7 @@ describe('Deleting a user', () => {
   beforeEach((done) => {
     joe = new User({ name: 'Joe' })
     joe.save()
-      .then(() => { done() })
+      .then(() => done())
   })
 
   it('model instance remove', (done) => {

@@ -8,7 +8,7 @@ describe('Reading users out of the database', () => {
     joe = new User({ name: 'Joe' })
 
     joe.save()
-      .then(() => { done() })
+      .then(() => done())
   })
 
   it('finds all users with a name of Joe', (done) => {

@@ -8,7 +8,7 @@ mongoose.Promise = global.Promise // ES6 Promise
 before((done) => {
   mongoose.connect('mongodb://localhost/users_test')
   mongoose.connection
-    .once('open', () => { done() })
+    .once('open', () => done())
     .on('error', (error) => {
       console.warn('Warning', error)
     })
