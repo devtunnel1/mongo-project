@@ -11,7 +11,11 @@ describe('Reading users out of the database', () => {
       .then(() => { done() })
   })
 
-  it('finds all users with a name of Joe', () => {
-    
+  it('finds all users with a name of Joe', (done) => {
+    User.find({ name: 'Joe' })
+      .then((users) => {
+        console.log(users)
+        done()
+      })
   })
 })
