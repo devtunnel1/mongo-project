@@ -2,12 +2,15 @@ const assert = require('assert')
 const User = require('../src/user')
 
 describe('Reading users out of the database', () => {
-  let joe
+  let alex, joe, maria, zach
 
   beforeEach((done) => {
+    alex = new User({ name: 'Alex' })
     joe = new User({ name: 'Joe' })
+    maria = new User({ name: 'Maria' })
+    zach = new User({ name: 'Zach' })
 
-    joe.save()
+    Promise.all([alex.save(), joe.save(), maria.save(), zach.save()])
       .then(() => done())
   })
 
@@ -25,5 +28,11 @@ describe('Reading users out of the database', () => {
         assert(user.name === 'Joe')
         done()
       })
+  })
+
+  it('can skip and limit the result set', () => {
+    User.find({})
+      .skip(1)
+      .limit(2)
   })
 })
